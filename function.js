@@ -2,27 +2,29 @@ function parsing(string) {
 	string+="";
 	let arr = string.split('.');
 	let size=arr.length;
-   
-   for (let i = 0; i<size ; i++)
+
+	for (let i = 0; i<size ; i++)
 	{
 		if(arr[i]==""||arr[i]==" "||arr[i]*1>255||arr[i]*1<0) // если чило больше 255 или меньше
-			{	alert("error number 0...255");   // то выдать ошибку
-			process.exit(0);} // и выйти
+		{	
+			alert("error number 0...255");   // то выдать ошибку
+			break;
+		} 
 	}
 
 	for (let i = 0; i<size ; i++)
 	{
-		if(size>4 || size<4)  // если в ip больше 4 числа
+		if(size>4 || size<4 || arr[i]=="" || arr[i]==" " || arr[i]*1>255 || arr[i]*1<0)  // если в ip больше 4 числа
 		{
 			alert("error number 0...255");  // выдать ошибку
-			process.exit(0);
+			break;
 		}
 		else
-		  {
+		{
 			transfer(arr[i]);   // иначе передать строку в функцию перевода 
 			if(i<size-1)
 				document.form_transfer.output_ip.value+="."; // после переведенного числа поставить .
-	   	}
+		}
 	}
 }
 
@@ -57,23 +59,40 @@ function transfer(value) {
 }
 
 function parsing_bin(string) {
-	string+="";
-	let arr = string.split('.');
-	let size=arr.length;
 
-
-  for (let i = 0; i<size ; i++)
-  if(size>4 || size<4 || arr[i]==""||arr[i]==" ")  // если в ip больше 4 числа
+	let minus=string.split('');
+	let siz_min=minus.length;
+	let min=true;
+	for (let i = 0; i<siz_min ; i++)
+	{
+		if(minus[i]=="-")
 		{
+			alert("error: mum < 0")
+			min=false;
+		}
+	}
+
+
+	if(min==true)
+	{
+		string+="";
+		let arr = string.split('.');
+		let size=arr.length;
+
+
+		for (let i = 0; i<size ; i++)
+  if(size>4 || size<4 || arr[i]==""||arr[i]==" ")  // если в ip больше 4 числа
+  {
 			alert("error size");  // выдать ошибку
-			process.exit(0);
+			break;
 		}
 
-	for (let i = 0; i<size ; i++)
-	{
+		for (let i = 0; i<size ; i++)
+		{
 			transfer_bin(arr[i]);   // иначе передать строку в функцию перевода 
 			if(i<size-1)
 				document.form_transfer.output_ip_bin.value+="."; // после переведенного числа поставить .
+		}
 	}
 }
 
@@ -82,24 +101,33 @@ function transfer_bin (val) {
 		//let names = val;
 		let arr = val.split('');
 		let size=arr.length;
+		let min=true;
 		for (let i = 0; i<size ; i++)
 		{
-       if(arr[i]>1 || arr[i]<0)  // если в ip больше 4 числа
-	    	{
-			    alert("error number: 0 or 1");  // выдать ошибку
-		    	process.exit(0);
-		    }
+			if(arr[i]!="0"&&arr[i]!="."&&arr[i]!=".")
+				min=false;
 		}
 
-		let sum=0, count=1 ;
+		if (min==true)
+		{
+			for (let i = 0; i<size ; i++)
+			{
+       if(arr[i]>1 || arr[i]<0)  // если в ip больше 4 числа
+       {
+			    alert("error number: 0 or 1");  // выдать ошибку
+			    break;
+			  }
+			}
+
+			let sum=0, count=1 ;
 
 
 
-		for (var i = size-1; i >=0 ; i--) {
+			for (var i = size-1; i >=0 ; i--) {
 
-			let temp=arr[i]*1;
-      arr[i]*=1;
-			
+				let temp=arr[i]*1;
+				arr[i]*=1;
+
 				arr[i]=arr[i]*count;
 
 				sum=sum+arr[i];
@@ -109,5 +137,5 @@ function transfer_bin (val) {
 			}
 
 			document.form_transfer.output_ip_bin.value+=sum;
-		
+		}
 	}
