@@ -14,6 +14,8 @@ function parsing(string) {
 
 	for (let i = 0; i<size ; i++)
 	{
+		if (arr[i]=="0")
+			document.form_transfer.output_ip.value+="0";
 		if(size>4 || size<4 || arr[i]=="" || arr[i]==" " || arr[i]*1>255 || arr[i]*1<0)  // если в ip больше 4 числа
 		{
 			alert("error number 0...255");  // выдать ошибку
