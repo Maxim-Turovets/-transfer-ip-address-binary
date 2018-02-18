@@ -106,7 +106,7 @@ function transfer_bin (val) {
 		let min=true;
 		for (let i = 0; i<size ; i++)
 		{
-			if(arr[i]!="0"&&arr[i]!="."&&arr[i]!=".")
+			if(arr[i]!="0"&&arr[i]!="1"&&arr[i]!=".")
 				min=false;
 		}
 
