@@ -55,3 +55,59 @@ function transfer(value) {
 		document.form_transfer.output_ip.value+=arr[a];  // запись числа в форму
 	}
 }
+
+function parsing_bin(string) {
+	string+="";
+	let arr = string.split('.');
+	let size=arr.length;
+
+
+  for (let i = 0; i<size ; i++)
+  if(size>4 || size<4 || arr[i]==""||arr[i]==" ")  // если в ip больше 4 числа
+		{
+			alert("error size");  // выдать ошибку
+			process.exit(0);
+		}
+
+	for (let i = 0; i<size ; i++)
+	{
+			transfer_bin(arr[i]);   // иначе передать строку в функцию перевода 
+			if(i<size-1)
+				document.form_transfer.output_ip_bin.value+="."; // после переведенного числа поставить .
+	}
+}
+
+function transfer_bin (val) {
+
+		//let names = val;
+		let arr = val.split('');
+		let size=arr.length;
+		for (let i = 0; i<size ; i++)
+		{
+       if(arr[i]>1 || arr[i]<0)  // если в ip больше 4 числа
+	    	{
+			    alert("error number: 0 or 1");  // выдать ошибку
+		    	process.exit(0);
+		    }
+		}
+
+		let sum=0, count=1 ;
+
+
+
+		for (var i = size-1; i >=0 ; i--) {
+
+			let temp=arr[i]*1;
+      arr[i]*=1;
+			
+				arr[i]=arr[i]*count;
+
+				sum=sum+arr[i];
+
+				count=count*2;
+
+			}
+
+			document.form_transfer.output_ip_bin.value+=sum;
+		
+	}
