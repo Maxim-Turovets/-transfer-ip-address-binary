@@ -3,10 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="function.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
-	
+	<form name="form_transfer">
+		<input type="text" name="input_ip">
+		<input type="button" name="ok" value="OK" onclick="parsing(document.form_transfer.input_ip.value)">
+	  <input type="text" name="output_ip" size=50>
+	</form>
+
 </body>
 </html>

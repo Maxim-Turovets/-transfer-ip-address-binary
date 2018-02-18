@@ -6,15 +6,15 @@ function parsing(string) {
 	for (let i = 0; i<size ; i++)
 	{
 		//console.log(arr[i]);
-    if(size>6)
+    if(size>4 || size<4)
     {
-			console.log("error");
+    	alert("error");
 			process.exit(0);
     }
 		else{
     transfer(arr[i]);
 		if(i<size-1)
-			console.log(".");
+	  document.form_transfer.output_ip.value+=".";
 		}
 	}
 }
@@ -45,8 +45,6 @@ function transfer(value) {
 	let size=arr.length;
 		for (let a=size-1; a>0 ;a--)
 		{
-			console.log(arr[a]);
+			document.form_transfer.output_ip.value+=arr[a];
 		}
 }
-
-parsing("10.10.10.10.10.10.10");
