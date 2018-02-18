@@ -4,13 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script src="function.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-	<form name="form_transfer">
-		<input type="text" name="input_ip">
-		<input type="button" name="ok" value="OK" onclick="parsing(document.form_transfer.input_ip.value)">
-	  <input type="text" name="output_ip" size=50>
+	<form name="form_transfer" align="center" >
+		<input class="inp" type="text" name="input_ip" placeholder="ip 255.255.255.255">
+		<input class="button1" type="button" name="ok" value="OK" onclick="parsing(document.form_transfer.input_ip.value)">
+	  <input class="inp" type="text" name="output_ip" size=50 placeholder="binary">
+	  <input class="button1" type="submit" value="reset" >
 	</form>
 
 </body>
